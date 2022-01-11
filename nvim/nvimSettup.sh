@@ -76,7 +76,7 @@ echo ""
 echo " === Copying Files Over === "
 echo ""
 
-cp ./init.vim ~/.config/nvim/
+cp ./files/init.vim ~/.config/nvim/
 
 echo ""
 echo " === Removing Junk Files === "
@@ -90,7 +90,7 @@ echo ""
 echo " === Creating nvim shortcut (v) === "
 echo ""
 
-cat ~/.bashrc nvimAlias.txt > ./temp
+cat ~/.bashrc ./files/nvimAlias.txt > ./temp
 cat ./temp > ~/.bashrc
 sudo rm ./temp
 
