@@ -86,6 +86,14 @@ rm nvim.appimage
 rm -r squashfs-root/
 rm nodesource_setup.sh
 
+echo ""
+echo " === Creating nvim shortcut (v) === "
+echo ""
+
+cat ~/.bashrc nvimAlias.txt > ./temp
+cat ./temp > ~/.bashrc
+sudo rm ./temp
+
 echo " ======= Done ======="
 
 # -
