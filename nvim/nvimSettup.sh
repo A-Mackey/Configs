@@ -47,20 +47,36 @@ echo ""
 echo " === Installing nvim === "
 echo ""
 
-sudo apt install neovim -y
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage
+
+./nvim.appimage --appimage-extract
+./squashfs-root/AppRun --version
+
+# Optional: exposing nvim globally.
+sudo mv squashfs-root /
+sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 echo ""
 echo " === Installing Vim-Plug === "
 echo ""
 
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-	       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo ""
 echo " === Copying Files Over === "
 echo ""
 
 cp ./init.vim ~/.config/nvim/
+
+echo ""
+echo " === Removing Junk Files === "
+echo ""
+
+rm nvim.appimage
+rm -r squashfs-root/
 
 echo " ======= Done ======="
 
