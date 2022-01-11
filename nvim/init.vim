@@ -24,9 +24,11 @@ Plug 'https://github.com/preservim/nerdtree' " Nerd Tree, view file tree
 Plug 'https://github.com/ryanoasis/vim-devicons' "Developer Icons
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " coc autocomplete
 
 " Color Schemes
 Plug 'EdenEast/nightfox.nvim' " Nightfox Theme
+Plug 'arcticicestudio/nord-vim' " Nord Vim Theme
 
 " Encoding
 set encoding=UTF-8

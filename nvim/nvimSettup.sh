@@ -35,7 +35,6 @@ echo ""
 
 # Install necessary tools
 sudo apt-get install fuse libfuse2 python3-pip ack-grep -y
-# -
 
 echo ""
 echo " === Installing Lua === "
@@ -44,12 +43,20 @@ echo ""
 sudo apt install lua5.3 -y
 
 echo ""
+echo " === Installing Node === "
+echo ""
+
+curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt-get -y nodejs
+
+echo ""
 echo " === Installing nvim === "
 echo ""
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
-./nvim.appimage
+#./nvim.appimage
 
 ./nvim.appimage --appimage-extract
 ./squashfs-root/AppRun --version
@@ -77,6 +84,7 @@ echo ""
 
 rm nvim.appimage
 rm -r squashfs-root/
+rm nodesource_setup.sh
 
 echo " ======= Done ======="
 
