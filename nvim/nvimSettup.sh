@@ -5,44 +5,62 @@
 
 echo $PATH
 echo $0
+echo ""
 
+echo ""
 echo " === Updating & Upgrading === "
+echo ""
 
 # Update all apt packages then upgrade them
 sudo apt update
 sudo apt upgrade
 
+echo ""
 echo " === Installing cURL === "
+echo ""
 
 # Install cURL
 sudo apt install -y curl
 
+echo ""
 echo " === Installing Git === "
+echo ""
 
 # Install Git
-sudo apt install git-all
+sudo apt install git -y
 
+echo ""
 echo " === Installing fuse, libfuse2, python3-pip, and ack-grep === "
+echo ""
 
 # Install necessary tools
 sudo apt-get install fuse libfuse2 python3-pip ack-grep -y
 # -
 
+echo ""
+echo " === Installing Lua === "
+echo ""
+
+sudo apt install lua5.3 -y
+
+echo ""
 echo " === Installing nvim === "
+echo ""
 
-# Download and install the app image
-wget --quiet https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage --output-document nvim
+sudo apt install neovim -y
 
-# Set the owner to root and make nvim available to all users
-chmod +x nvim
-sudo chown root:root nvim
+echo ""
+echo " === Installing Vim-Plug === "
+echo ""
 
-# move the binary file
-sudo mv nvim /usr/bin
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+	       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-# Move to home directory and create the subfolder structure to store the config files
-cd ~
-mkdir -p .config/nvim
+echo ""
+echo " === Copying Files Over === "
+echo ""
+
+cp ./init.vim ~/.config/nvim/
 
 echo " ======= Done ======="
 
